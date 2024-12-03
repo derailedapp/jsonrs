@@ -6,12 +6,6 @@ defmodule Jsonrs do
   source_url = Mix.Project.config()[:source_url]
   version = Mix.Project.config()[:version]
 
-  use RustlerPrecompiled, otp_app: :jsonrs,
-    base_url: "#{source_url}/releases/download/v#{version}",
-    force_build: System.get_env("FORCE_JSONRS_BUILD") in ["1", "true"],
-    targets: RustlerPrecompiled.Config.default_targets(),
-    version: version
-
   @type compression_algorithm :: :gzip | :none
   @type compression_level :: non_neg_integer()
   @type compression_options :: {compression_algorithm(), compression_level()}
